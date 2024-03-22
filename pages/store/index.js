@@ -32,22 +32,22 @@ export default function Products({ staticProducts }) {
     const currentProducts = staticProducts.slice(startIndex, endIndex);
 
     return (
-    <>
-        <div style={{ flexWrap: "wrap", display: "flex", gap: "20px" }}>
-            {currentProducts.map(prod => (
-                <ProductBox key={prod.id} product={prod} />
-            ))}
-        </div>
-        <br />
-        <Row className="justify-content-center mt-3">
+        <>
+            <div style={{ flexWrap: "wrap", display: "flex", justifyContent: "center",gap: "20px"  }}>
+                {currentProducts.map(prod => (
+                    <ProductBox key={prod.id} product={prod} />
+                ))}
+            </div>
+            <br />
+            <Row >
                 <Col>
-        <Pagination>
-            <Pagination.Prev onClick={previousPage} disabled={page === 1} />
-            <Pagination.Item>{page}</Pagination.Item>
-            <Pagination.Next onClick={nextPage} disabled={page === Math.ceil(staticProducts.length / PER_PAGE)} />
-        </Pagination>
-    </Col>
-</Row>
+                    <Pagination>
+                        <Pagination.Prev onClick={previousPage} disabled={page === 1} />
+                        <Pagination.Item>{page}</Pagination.Item>
+                        <Pagination.Next onClick={nextPage} disabled={page === Math.ceil(staticProducts.length / PER_PAGE)} />
+                    </Pagination>
+                </Col>
+            </Row>
         </>
     );
 }

@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-
+import AddToCart from './AddToCart';
 function ProductBox({ product }) {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem' }} >
            <Card.Img 
   variant="top" 
   src={product.images[0]} 
@@ -12,26 +12,26 @@ function ProductBox({ product }) {
     width: "100%", 
     height: "200px", 
     objectFit: "contain",
-    margin: "auto", 
+    marginTop: "1em", 
     display: "block", 
   }} 
 />
 
-            <Card.Body>
+            <Card.Body className=' text-center'>
                 <Card.Title>{product.title}</Card.Title>
-                <Card.Text>
+                <Card.Text >
                     {product.description}
                     <br />
                     <br />
-                    <strong>${product.price.toFixed(2)}</strong>
+                    <strong >${product.price.toFixed(2)}</strong>
                 </Card.Text>
-                <div className="d-flex justify-content-center">
-                    <Link href={`/product/${product.id}`} passHref className='me-2'>
-                        <Button variant="primary" size="sm">View Details</Button>
+                <div className="">
+                    <Link href={`/store/${product.id}`} passHref className='me-2'>
+                        <Button variant="primary" size="md">View Details</Button>
                     </Link>
-                    <Link href={`/cart/add/${product.id}`} passHref>
-                        <Button variant="secondary" size="sm">Add to Cart</Button>
-                    </Link>
+                    
+                    <AddToCart product={product} />
+                    
                 </div>
             </Card.Body>
         </Card>
