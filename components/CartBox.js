@@ -6,7 +6,16 @@ import { FaTimes } from 'react-icons/fa';
 
 function CartOffCanvas({ show, handleClose }) {
   const [cartList, setCartList] = useAtom(cartListAtom);
- 
+
+  const handleDecrement = (index) => {
+    const updatedCartList = [...cartList];
+    updatedCartList[index].quantity -= 1;
+    if (updatedCartList[index].quantity === 0) {
+      updatedCartList.splice(index, 1);
+    }
+    setCartList(updatedCartList);
+};
+
   return (
     <Offcanvas 
     show={show} 
@@ -57,7 +66,7 @@ function CartOffCanvas({ show, handleClose }) {
 </span>
 
                 {/* Delete Button */}
-                <Button variant="outline-danger" size="sm">
+                <Button variant="outline-danger" onClick={() => handleDecrement(index)} size="sm">
                   <FaTimes />
                 </Button>
               </div>

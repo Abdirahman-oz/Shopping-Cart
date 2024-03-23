@@ -23,7 +23,10 @@ export default function MainNav() {
     if (!searchField.trim()) {
       return;
     }
-    router.push(`/`);
+    
+
+        router.push(`/store?search=${searchField}`);
+    
   }
 
   // get count for cart
